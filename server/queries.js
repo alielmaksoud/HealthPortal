@@ -10,28 +10,24 @@ const db = pgp(config);
 
 // Improve: indicate if there are more
 // seems like only the owner of DB can query information.columns and get the column name
-function getTable(type) {
+function getTable(req, res) {
 	const table = {};
-	return function(req, res) {
-		db.any(`SELECT * FROM ${type} LIMIT 25`)
-		.then(data => {
-			//table.data = data;
-			res.send(data);
-		})
-		.catch(err => {
-			res.send({error: err});
-		})
-
-		// db.any(`SELECT * FROM ${type} WHERE false`)
-		// .then(data => {
-		// 	//table.data = data;
-		// 	res.send(data);
-		// })
-		// .catch(err => {
-		// 	res.status(404).send({error: err});
-		// })
-
-	}
+	const tableName = req.params.tableName;
+	let sql = `SELECT * FROM ${tableName} LIMIT 25`;
+	console.log(sql);
+	db.any(sql)
+	.then(data => {
+		table.data = data;
+		sql = `SELECT column_name FROM information_schema.columns WHERE table_name='${tableName}'`;
+		return db.any(sql);
+	})
+	.then(data => {
+		table.column_name = data;
+		res.send(table);
+	})
+	.catch(err => {
+		res.send({error: err});
+	})
 }
 
 function getTables(req, res) {

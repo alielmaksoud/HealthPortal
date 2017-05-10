@@ -25,16 +25,17 @@ export function modifyUnderscore(value) {
 		return value;
 	} else {
 		// in our case, only two words 
-		const temp = value.split("_");
-		const capitalized = temp[1].charAt(0).toUpperCase() + temp[1].slice(1);
-		return temp[0] + capitalized
+		const string = value.replace("_", "-");
+		return string;
 	}
 }
 
-export function sortNum(nums, decsOrAsc) {
-	
-}
-
-export function sortLetter(words, alphabeticallOrNot) {
-
+export function modifyLineThrough(value) {
+	if(!value || value.length === 0 || parseInt(value) <= 0) {
+		return value;
+	} else {
+		// in our case, only two words 
+		const string = value.replace("-", "_");
+		return string;
+	}
 }

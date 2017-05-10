@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import { getAllTables, toggleModal } from '../actions/index';
+import { getAllTables, toggleModal, getTable } from '../actions/index';
 
 import Modal from './Modal';
 
@@ -18,7 +18,15 @@ class Admin extends Component {
   }
 
   openModal(action) {
-    this.props.toggleModal(this.props.modal, "addRow")
+    this.props.toggleModal(this.props.modal, action);
+  }
+
+  handleClick(table_name) {
+    this.props.getTable(table_name)
+
+    return (e) => {
+      e.preventDefault();
+    }
   }
 
   displayList(data) {
@@ -33,7 +41,11 @@ class Admin extends Component {
         }
         return (
           <li key={ table }>
-            <Link to={ baseUrl + table } activeClassName="active">
+            <Link 
+              to={ baseUrl + table } 
+              activeClassName="active"
+              onClick={() => { return this.handleClick(i.table_name) }}
+            >
               {i.table_name}
             </Link>
           </li>
@@ -113,7 +125,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getAllTables, toggleModal }, dispatch);
+  return bindActionCreators({ getAllTables, toggleModal, getTable }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);

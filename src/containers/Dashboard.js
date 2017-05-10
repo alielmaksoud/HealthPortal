@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-
 import Graph from '../components/Graph';
 import Loader from '../components/Loader';
 import ReactGridLayout from 'react-grid-layout';

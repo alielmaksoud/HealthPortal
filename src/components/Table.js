@@ -5,7 +5,7 @@ export default (props) => {
   return (
 		<ReactTable
       data={props.data}
-      columns={props.columns}
+      columns={props.columns || []}
       loading={props.loading || false}
       defaultFilterMethod={(filter, row, column) => {
                               const id = filter.pivotId || filter.id

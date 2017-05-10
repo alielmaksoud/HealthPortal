@@ -15,11 +15,8 @@ router.get('/api/patients/:patientId', db.getPatient);
 
 // Read
 router.get('/api/tables', db.getTables);
-router.get('/api/doctors', db.getTable("doctors"));
-router.get('/api/patients', db.getTable("patients"));
-router.get('/api/heartRates', db.getTable("heart_rate"));
-router.get('/api/temperature', db.getTable("temperature"));
-router.get('/api/patientsDoctors', db.getTable("patients_doctors"));
+// Ideally should like this
+router.get('/api/tables/:tableName', db.getTable);
 
 // Create
 router.post('/api/tables/:tableId/row', db.addRow);

@@ -10,13 +10,8 @@ import App from './components/App';
 import Auth from './containers/Auth';
 import Admin from './containers/Admin';
 import Dashboard from './containers/Dashboard';
-import DoctorTable from './containers/DoctorTable';
-import PatientTable from './containers/PatientTable';
-import PatientsDoctorsTable from './containers/PatientsDoctorsTable';
-import HeartRateTable from './containers/HeartRateTable';
-import TemperatureTable from './containers/TemperatureTable';
 import PatientGraph from './containers/PatientGraph';
-
+import TableContainer from './containers/TableContainer';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -35,11 +30,7 @@ ReactDOM.render(
           <Route path=":docId/:patientId" component={PatientGraph} />
         </Route>
         <Route path="admin" component={Admin}>
-          <Route path="patients" component={PatientTable} />
-        	<Route path="doctors" component={DoctorTable} />
-          <Route path="temperature" component={TemperatureTable} />
-          <Route path="patientsDoctors" component={PatientsDoctorsTable} />
-          <Route path="heartRate" component={HeartRateTable} />
+          <Route path=":tableName" component={TableContainer} />
         </Route>
         {
         	//<Route path="404" component={RequireAuth(Feature)} />
