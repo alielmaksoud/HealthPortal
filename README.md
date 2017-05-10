@@ -6,28 +6,28 @@
 
 ![HealthPortal](/screenshots/screenshot.jpg?raw=true "Screenshot of Landing Page")
 
-The app is built with React.js and Redux for front-end and Node.js for the back-end. 
+The app is built with React.js and Redux for the front-end and Node.js for the back-end. 
 
 The back-end can interface with a remote PostgresSQL database on AWS. 
 
 
-More development info can be view on Built With Section.
+More development info can be viewed on Built With Section.
 
 The example CSV file is also uploaded for the purpose of displaying data and testing the app.
 
-The app provides users a landing page to log in. As in the task requirement, a fake login part presents on a landing page.
+The app provides users with a landing page to log in. As in the task requirement, a fake login component presents on a landing page.
 
-A doctor gives his/her ID and hits send, which will trigger the fake sign in procedure. If the ID exists in our database, his/her patient data will be returned and the app will go to his/her profile page (/dashboard/:doctor_id).
+A doctor gives his/her ID and hits 'send', which will trigger the fake login. If the ID exists in our database, his/her patient data will be returned and the app will go to his/her profile page (/dashboard/:doctor_id).
 
-The profile page is dashboard style with all of a doctor's patient data as charts. The last 10 data in the database is fetched for each patient.
+The profile page is in dashboard style with all of a doctor's patient data presented as charts. The last 10 data in the database is fetched for each patient.
 
-Each chart area consists of a title with patient name and ID, charts title (in our case, "Temperature and Heart Rate"), and the chart itself.
+Each chart area consists of a title with patient name and ID, charts title, and the chart itself.
 
-Each chart has its legend on the top of the chart,  X, Y axis, and data presented as sparklines.
+Each chart has its legend on the top of the chart,  X, Y axes, and the data presented as sparklines.
 
 Each chart area is draggable and zoomable. For convenience, I set the width of each chart area to the full width of the page. But generally, it's configurable. 
 
-Two data shows up in the chart, temperature and heart rate in red and black.
+Two data show up in the chart, temperature and heart rate in red and black.
 
 Each data point is interactive. When a user hovers one of it, a tooltip will show up with more details of it.
 
@@ -36,25 +36,23 @@ When a user clicks on the chart area, more data of this patient will be fetched,
 
 On the patient page, the user can see the name and ID of the patient he/she just selected. And below that, it's a chart with all of the data of this particular patient.
 
-The chart is roughly the with charts in the dashboard with a few differences. 
+The chart is roughly the same with charts in the dashboard with a few differences. 
 
 First, all data of the patient is on the chart.
  
-Second, with the control of the below checkbox, the user can view the average of the data as a dotted mark line.
-
+Second, with the control of the checkbox, the user can view the average of the data as dotted mark lines.
 
 As in the task requirement, an admin app is created as well (at /admin). No authentication is created, and currently, we can access it by typing the URL.
 
-
 When an admin at the admin page, a list of available databases will be listed in the left navigation menu. By default, no database is selected.
 
-When the admin clicks any of the databases, first 25 rows of data will be returned and displayed in a table on the right. Currently, show more data is not implemented and admin can only see a database at a time.
+When the admin clicks any of the databases, first 25 rows of data will be returned and displayed in a table on the right. Currently, showing more data is not implemented and admin can only see a database at a time.
 
 The data table is sortable and filterable. The small area under each column is the sort button for each column. Admin can sort the data in the descendent or ascendant manner by number or by word.
 
-The input box for each column is the filter input box. It will automatically filter as admin types.
+The input box for each column is the filter input box. It will automatically filter in real time as admin types.
 
-Currently, admin can only read the database data. CREATE, UPDATE AND DELETE functionalities are still under development. Because they are in the task requirement, they will be finished.
+Currently, admin can only read the database data. CREATE, UPDATE AND DELETE are implemented as API endpoints but functionalities are not available in the front-end. More todos can be found in the Todos Section.
 
 
 ## Getting Started
